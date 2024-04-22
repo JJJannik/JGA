@@ -13,27 +13,31 @@ jobs:
         with:
           distribution: 'adopt-hotspot'
           java-version: '17'
+
       - name: Build everything with Gradle
         run: gradle shadowJar
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
         with:
-          tag_name: ${{ github.ref_name }}
-          release_name: "Release ${{ github.ref_name }}"
+          tag_name: ${{ env.TAG }}
+          release_name: "Release ${{ env.TAG }}"
           body: "Automatic release"
           draft: true
           prerelease: false
+
       - name: Upload Artifact
         id: upload-release-asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NAME: ${{ steps.create_release.outputs.name }}
+          TAG: ${{ github.ref_name }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/libs/${{ env.NAME }}.jar
-          asset_name: ${{ env.NAME }}.jar
+          asset_path: ./build/libs/${{ env.TAG }}.jar
+          asset_name: ${{ env.TAG }}.jar
           asset_content_type: application/java-archive
