@@ -19,7 +19,7 @@ If any endpoint contained in this API becomes deprecated in the future, I will u
 
 ## How to use
 
-Latest release: [GitHub Release]()
+Latest release: [GitHub Release](https://github.com/JJJannik/JGA/releases)
 
 Be sure to replace the **VERSION** key below with the one of the GitHub release versions!
 
