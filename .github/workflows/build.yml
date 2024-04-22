@@ -38,6 +38,6 @@ jobs:
           TAG: ${{ github.ref_name }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/libs/${{ env.TAG }}.jar
-          asset_name: ${{ env.TAG }}.jar
+          asset_path: ./build/libs/JGA-${{ env.TAG }}.jar
+          asset_name: JGA-${{ env.TAG }}.jar
           asset_content_type: application/java-archive
