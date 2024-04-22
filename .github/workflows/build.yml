@@ -34,6 +34,6 @@ jobs:
           VERSION: ${{ steps.get_version.outputs.VERSION }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/libs/JGA-$VERSION.jar
-          asset_name: JGA-$VERSION.jar
+          asset_path: ./build/libs/JGA-${{ env.VERSION }}.jar
+          asset_name: JGA-${{ env.VERSION }}.jar
           asset_content_type: application/java-archive
