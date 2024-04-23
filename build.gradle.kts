@@ -1,5 +1,6 @@
 plugins {
     java
+    `maven-publish`
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
@@ -25,6 +26,18 @@ dependencies {
 java {
     withJavadocJar()
     withSourcesJar()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = group.toString()
+            artifactId = rootProject.name
+            version = rootProject.version.toString()
+
+            from(components["java"])
+        }
+    }
 }
 
 tasks {
