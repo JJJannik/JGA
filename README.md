@@ -72,7 +72,7 @@ Now you can continue with the [manual installation](#manual-installation)
 
 ## Getting help
 
-Before trying to contact me, please overthink if the problem can be solved by reading the Docs written in this project.. they may help.
+For general questions to the Greev API, you can ask on the [Greev Discord](https://discord.gg/greev-eu-301471248393830413) as well.
 
 If you experience an issue, feel free to contact me via my Discord `jjjannik` or just write a detailed issue in this repository.
 
