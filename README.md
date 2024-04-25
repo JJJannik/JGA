@@ -1,3 +1,5 @@
+[![Release](https://jitpack.io/v/JJJannik/JGA.svg)]
+
 # JGA (Java Greev API)
 
 JGA provides a full Java Wrapper for the public [Greev API](https://api.greev.eu/v2/swagger-ui/index.html#/).

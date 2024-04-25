@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "de.jjjannik"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -31,7 +31,7 @@ java {
 publishing {
     publications {
         create<MavenPublication>("maven") {
-            groupId = group.toString()
+            groupId = "com.github.JJJannik"
             artifactId = rootProject.name
             version = rootProject.version.toString()
 
