@@ -26,6 +26,12 @@ dependencies {
 java {
     withJavadocJar()
     withSourcesJar()
+
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
+    }
 }
 
 publishing {
@@ -43,8 +49,6 @@ publishing {
 tasks {
     compileJava {
         options.encoding = "UTF-8"
-        sourceCompatibility = JavaVersion.VERSION_17.toString()
-        targetCompatibility = JavaVersion.VERSION_17.toString()
     }
     shadowJar {
         archiveFileName.set("JGA-$version.jar")
