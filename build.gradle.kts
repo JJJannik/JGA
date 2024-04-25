@@ -43,6 +43,8 @@ publishing {
 tasks {
     compileJava {
         options.encoding = "UTF-8"
+        sourceCompatibility = JavaVersion.VERSION_17.toString()
+        targetCompatibility = JavaVersion.VERSION_17.toString()
     }
     shadowJar {
         archiveFileName.set("JGA-$version.jar")
