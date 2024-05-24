@@ -11,7 +11,7 @@ package de.jjjannik.utils.exceptions;
  * <li>Will also throw, when gotten stats from Player do not exist. Getting top stats returns only an empty string if no players are found</li>
  * </ul>
  */
-public class APICallException extends Exception {
+public class APICallException extends RuntimeException {
 
     /**
      * Constructs an {@code APICallException} with no detail message.

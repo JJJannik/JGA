@@ -4,7 +4,6 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import de.jjjannik.JGAInitializer;
 import de.jjjannik.utils.exceptions.APICallException;
-import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,7 +18,6 @@ import java.util.Optional;
 public class RequestManager {
     private static final UnsafeHttpRequest request = new UnsafeHttpRequest();
 
-    @SneakyThrows(APICallException.class)
     public @NotNull JsonElement requestData(String uri) {
         JsonElement element = new JsonObject();
         try {
