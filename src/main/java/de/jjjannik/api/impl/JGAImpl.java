@@ -92,6 +92,21 @@ public class JGAImpl implements JGA {
     }
 
     @Override
+    public LoginstreakPlayer getLoginstreakPlayer(UUID uuid) {
+        return new LoginstreakPlayer(manager.requestData(Standard.LOGIN_STREAK.getPlayerURL().formatted(uuid)).getAsJsonObject());
+    }
+
+    @Override
+    public List<LoginstreakPlayer> getTopLoginstreak(int amount, int offset) {
+        return manager.requestData(Standard.LOGIN_STREAK.getPlayerURL().formatted(amount, offset))
+                .getAsJsonArray()
+                .asList()
+                .stream()
+                .map(e -> new LoginstreakPlayer(e.getAsJsonObject()))
+                .toList();
+    }
+
+    @Override
     public PlayerStatsEntity getAllPlayerStats(UUID uuid) {
         return new PlayerStatsEntity(manager.requestData(PlayerStats.GET_ALL_STATS.getUrl().formatted(uuid)).getAsJsonObject());
     }

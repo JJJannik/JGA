@@ -12,6 +12,6 @@ public class ClanMember extends DataEntity {
     public ClanMember(JsonObject jsonObject) {
         super(jsonObject);
         this.name = jsonObject.get("name").getAsString();
-        this.isLeader = jsonObject.get("type").getAsBoolean();
+        this.isLeader = jsonObject.get("type").getAsInt() == 1;
     }
 }

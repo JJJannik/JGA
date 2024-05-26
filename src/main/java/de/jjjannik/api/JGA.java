@@ -93,6 +93,21 @@ public interface JGA {
     TokensPlayer getTokensPlayer(UUID uuid);
 
     /**
+     * Get player stats for Loginstreak
+     * @param uuid of the player
+     * @return a LoginstreakPlayer object
+     */
+    LoginstreakPlayer getLoginstreakPlayer(UUID uuid);
+
+    /**
+     * Get top player stats for Loginstreak
+     * @param amount of returned player
+     * @param offset of which place the API returns data
+     * @return A list of the top Loginstreak player
+     */
+    List<LoginstreakPlayer> getTopLoginstreak(int amount, int offset);
+
+    /**
      * Get all Minigames stats of a Player
      * @param uuid UUID of the Player
      * @return An PlayerStatsEntity object
@@ -134,7 +149,7 @@ public interface JGA {
     List<PvPPlayer> getTopQsg(int amount, int offset);
 
     /**
-     * Get player stats for Qsg
+     * Get player stats for QSG
      * @param uuid of the Player
      * @return a PvPPlayer object
      */
