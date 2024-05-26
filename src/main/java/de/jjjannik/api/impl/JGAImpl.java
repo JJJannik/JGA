@@ -112,12 +112,12 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public List<ClanPlayer> getClanPlayers(String clanName) {
+    public List<ClanMember> getClanMembers(String clanName) {
         return manager.requestData(Clans.GET_MEMBERS.getUrl().formatted(clanName))
                 .getAsJsonArray()
                 .asList()
                 .stream()
-                .map(e -> new ClanPlayer(e.getAsJsonObject()))
+                .map(e -> new ClanMember(e.getAsJsonObject()))
                 .toList();
     }
 

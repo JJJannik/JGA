@@ -121,7 +121,7 @@ public interface JGA {
      * @param clanName of the clan
      * @return A list of Clan player
      */
-    List<ClanPlayer> getClanPlayers(String clanName);
+    List<ClanMember> getClanMembers(String clanName);
 
     // Normal stats methods
 

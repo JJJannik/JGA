@@ -16,7 +16,7 @@ public class PlayerMetaEntity extends Player {
         super(object);
         this.lastOnline = object.get("lastOnline").getAsLong();
         this.firstOnline = object.get("firstOnline").getAsLong();
-        clanPlayer = new ClanPlayer(object.get("clan").getAsJsonObject());
-        playerRank = new PlayerRank(object.get("rank").getAsJsonObject());
+        this.clanPlayer = object.get("clan") == null ? null : new ClanPlayer(object.get("clan").getAsJsonObject());
+        this.playerRank = new PlayerRank(object.get("rank").getAsJsonObject());
     }
 }
