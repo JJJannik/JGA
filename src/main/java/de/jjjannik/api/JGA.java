@@ -243,7 +243,7 @@ public interface JGA {
      * @param uuid of the Player
      * @return a KillsDeathsPlayer object
      */
-    KillsDeathsPlayer getUHCPlayer(UUID uuid);
+    PvPPlayer getUHCPlayer(UUID uuid);
 
     /**
      * Get top player stats for Bowspleef
@@ -363,7 +363,7 @@ public interface JGA {
      * @param uuid of the Player
      * @return a KillsDeathsPlayer object
      */
-    KillsDeathsPlayer get1v1Player(UUID uuid);
+    KillsDeathsPlayer get1vs1Player(UUID uuid);
 
     /**
      * Get top player stats for Rush

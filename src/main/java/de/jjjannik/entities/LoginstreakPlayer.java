@@ -11,7 +11,7 @@ public class LoginstreakPlayer extends Player {
 
     public LoginstreakPlayer(JsonObject object) {
         super(object);
-        this.currentStreak = object.get("currenttreak").getAsInt();
+        this.currentStreak = object.get("currentstreak").getAsInt();
         this.maxStreak = object.get("maxstreak").getAsInt();
     }
 }

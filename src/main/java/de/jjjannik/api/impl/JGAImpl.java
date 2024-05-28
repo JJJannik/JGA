@@ -237,8 +237,8 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public KillsDeathsPlayer getUHCPlayer(UUID uuid) {
-        return new KillsDeathsPlayer(manager.requestData(Standard.UHC.getPlayerURL().formatted(uuid)).getAsJsonObject());
+    public PvPPlayer getUHCPlayer(UUID uuid) {
+        return new PvPPlayer(manager.requestData(Standard.UHC.getPlayerURL().formatted(uuid)).getAsJsonObject());
     }
 
     @Override
@@ -357,7 +357,7 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public KillsDeathsPlayer get1v1Player(UUID uuid) {
+    public KillsDeathsPlayer get1vs1Player(UUID uuid) {
         return new KillsDeathsPlayer(manager.requestData(Standard.ONE_VS_ONE.getPlayerURL().formatted(uuid)).getAsJsonObject());
     }
 
