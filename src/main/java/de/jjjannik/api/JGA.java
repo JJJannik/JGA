@@ -680,7 +680,7 @@ public interface JGA {
      * Get Jump and Run times of a Player of a specific date
      * @param uuid of the Player
      * @param year of the Advent event
-     * @param id of the Advent date
+     * @param day of the Advent date
      * @return A list of Jump and Run Times
      */
     List<JumpNRunTime> getDayPlayerAdventTimes(UUID uuid, int year, int day);
