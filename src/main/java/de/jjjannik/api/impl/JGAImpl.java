@@ -6,6 +6,8 @@ import de.jjjannik.entities.basic.KillsDeathsPlayer;
 import de.jjjannik.entities.basic.Player;
 import de.jjjannik.entities.basic.PvPPlayer;
 import de.jjjannik.entities.basic.WinsLosesPlayer;
+import de.jjjannik.entities.fastbridge.FastBridgeIslandsPlayer;
+import de.jjjannik.entities.fastbridge.FastBridgePlayer;
 import de.jjjannik.entities.jumpnrun.JumpNRunPlayer;
 import de.jjjannik.entities.jumpnrun.JumpNRunTime;
 import de.jjjannik.entities.minesweeper.*;
@@ -437,18 +439,18 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public List<FastBridgePlayer> getTopFastbridgeIslands(FastbridgeIslands.Map map, int amount, int offset) {
+    public List<FastBridgeIslandsPlayer> getTopFastbridgeIslands(FastbridgeIslands.Map map, int amount, int offset) {
         return manager.requestData(FastbridgeIslands.GET_TOP.getUrl().formatted(map, amount, offset))
                 .getAsJsonArray()
                 .asList()
                 .stream()
-                .map(e -> new FastBridgePlayer(e.getAsJsonObject()))
+                .map(e -> new FastBridgeIslandsPlayer(e.getAsJsonObject()))
                 .toList();
     }
 
     @Override
-    public FastBridgePlayer getFastbridgeIslandsPlayer(UUID uuid) {
-        return new FastBridgePlayer(manager.requestData(FastbridgeIslands.GET_PLAYER.getUrl().formatted(uuid)).getAsJsonObject());
+    public FastBridgeIslandsPlayer getFastbridgeIslandsPlayer(UUID uuid) {
+        return new FastBridgeIslandsPlayer(manager.requestData(FastbridgeIslands.GET_PLAYER.getUrl().formatted(uuid)).getAsJsonObject());
     }
 
     @Override
@@ -620,7 +622,7 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public List<JumpNRunTime> getAllPlayerJumpAndRunTimes(UUID uuid, int year) {
+    public List<JumpNRunTime> getYearPlayerAdventTimes(UUID uuid, int year) {
         return manager.requestData(AdventJnRs.GET_ALL_PLAYER.getUrl().formatted(uuid, year))
                 .getAsJsonArray()
                 .asList()
@@ -630,8 +632,8 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public List<JumpNRunTime> getAllPlayerJumpAndRunTimes(UUID uuid, int year, int id) {
-        return manager.requestData(AdventJnRs.GET_ALL_PLAYER.getUrl().formatted(uuid, year, id))
+    public List<JumpNRunTime> getDayPlayerAdventTimes(UUID uuid, int year, int day) {
+        return manager.requestData(AdventJnRs.GET_ALL_PLAYER_DATE.getUrl().formatted(uuid, year, day))
                 .getAsJsonArray()
                 .asList()
                 .stream()

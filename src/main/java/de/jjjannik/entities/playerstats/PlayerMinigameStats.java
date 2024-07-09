@@ -7,6 +7,7 @@ import de.jjjannik.entities.basic.DataEntity;
 import de.jjjannik.entities.basic.KillsDeathsPlayer;
 import de.jjjannik.entities.basic.PvPPlayer;
 import de.jjjannik.entities.basic.WinsLosesPlayer;
+import de.jjjannik.entities.fastbridge.FastBridgePlayer;
 import de.jjjannik.entities.minesweeper.MinesweeperTimePlayer;
 import lombok.Getter;
 
@@ -33,7 +34,7 @@ public class PlayerMinigameStats extends DataEntity {
     private final WinsLosesPlayer tntRunPlayer;
     private final PvPPlayer uhcPlayer;
     private final List<FastBridgePlayer> fastBridgePlayer = new ArrayList<>();
-    private final List<MinesweeperTimePlayer> minesweeperPlayer = new ArrayList<MinesweeperTimePlayer>();
+    private final List<MinesweeperTimePlayer> minesweeperPlayer = new ArrayList<>();
     private final List<BadgeEntity> badges = new ArrayList<>();
 
     public PlayerMinigameStats(JsonObject object) {

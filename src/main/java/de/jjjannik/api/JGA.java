@@ -5,6 +5,8 @@ import de.jjjannik.entities.basic.KillsDeathsPlayer;
 import de.jjjannik.entities.basic.Player;
 import de.jjjannik.entities.basic.PvPPlayer;
 import de.jjjannik.entities.basic.WinsLosesPlayer;
+import de.jjjannik.entities.fastbridge.FastBridgeIslandsPlayer;
+import de.jjjannik.entities.fastbridge.FastBridgePlayer;
 import de.jjjannik.entities.jumpnrun.JumpNRunPlayer;
 import de.jjjannik.entities.jumpnrun.JumpNRunTime;
 import de.jjjannik.entities.minesweeper.*;
@@ -450,14 +452,14 @@ public interface JGA {
      * @param offset of which place the API returns data
      * @return A list of the top Fastbridge Staircase player
      */
-    List<FastBridgePlayer> getTopFastbridgeIslands(FastbridgeIslands.Map map, int amount, int offset);
+    List<FastBridgeIslandsPlayer> getTopFastbridgeIslands(FastbridgeIslands.Map map, int amount, int offset);
 
     /**
      * Get player stats for Fastbridge Islands
      * @param uuid of the Player
      * @return a FastbridgePlayer object
      */
-    FastBridgePlayer getFastbridgeIslandsPlayer(UUID uuid);
+    FastBridgeIslandsPlayer getFastbridgeIslandsPlayer(UUID uuid);
 
     /**
      * Get top player stats for Fastbridge Inclined
@@ -672,7 +674,7 @@ public interface JGA {
      * @param year of the Advent event
      * @return A list of Jump and Run Times
      */
-    List<JumpNRunTime> getAllPlayerJumpAndRunTimes(UUID uuid, int year);
+    List<JumpNRunTime> getYearPlayerAdventTimes(UUID uuid, int year);
 
     /**
      * Get Jump and Run times of a Player of a specific date
@@ -681,5 +683,5 @@ public interface JGA {
      * @param id of the Advent date
      * @return A list of Jump and Run Times
      */
-    List<JumpNRunTime> getAllPlayerJumpAndRunTimes(UUID uuid, int year, int id);
+    List<JumpNRunTime> getDayPlayerAdventTimes(UUID uuid, int year, int day);
 }
