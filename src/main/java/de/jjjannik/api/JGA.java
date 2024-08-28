@@ -358,7 +358,7 @@ public interface JGA {
      * @param offset of which place the API returns data
      * @return A list of the top 1vs1 player
      */
-    List<PvPPlayer> getTop1vs1(int amount, int offset);
+    List<KillsDeathsPlayer> getTop1vs1(int amount, int offset);
 
     /**
      * Get player stats for 1vs1
@@ -457,9 +457,9 @@ public interface JGA {
     /**
      * Get player stats for Fastbridge Islands
      * @param uuid of the Player
-     * @return a FastbridgePlayer object
+     * @return a List of FastbridgePlayer objects containing all times for the different maps
      */
-    FastBridgeIslandsPlayer getFastbridgeIslandsPlayer(UUID uuid);
+    List<FastBridgeIslandsPlayer> getFastbridgeIslandsPlayer(UUID uuid);
 
     /**
      * Get top player stats for Fastbridge Inclined
@@ -666,7 +666,7 @@ public interface JGA {
      * @param offset of which place the API returns data
      * @return A list of top Player on Advents Day Jump and Run
      */
-    List<JumpNRunPlayer> getTopJumpAndRun(int year, int id, @Nullable Integer amount, @Nullable Integer offset);
+    List<JumpNRunPlayer> getTopJumpAndRun(int year, int id, int amount, int offset);
 
     /**
      * Get Jump and Run times of a Player of a year

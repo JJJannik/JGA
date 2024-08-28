@@ -10,6 +10,6 @@ public class PerformancePlayer extends Player {
 
     public PerformancePlayer(JsonObject object) {
         super(object);
-        this.performance = object.get("performance").getAsInt();
+        this.performance = object.get("playerperformance").getAsInt();
     }
 }

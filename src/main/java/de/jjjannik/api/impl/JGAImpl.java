@@ -80,7 +80,7 @@ public class JGAImpl implements JGA {
 
     @Override
     public List<TokensPlayer> getTopTokens(int amount, int offset) {
-        return manager.requestData(Standard.TOKENS.getPlayerURL().formatted(amount, offset))
+        return manager.requestData(Standard.TOKENS.getTopURL().formatted(amount, offset))
                 .getAsJsonArray()
                 .asList()
                 .stream()
@@ -100,7 +100,7 @@ public class JGAImpl implements JGA {
 
     @Override
     public List<LoginstreakPlayer> getTopLoginstreak(int amount, int offset) {
-        return manager.requestData(Standard.LOGIN_STREAK.getPlayerURL().formatted(amount, offset))
+        return manager.requestData(Standard.LOGIN_STREAK.getTopURL().formatted(amount, offset))
                 .getAsJsonArray()
                 .asList()
                 .stream()
@@ -349,12 +349,12 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public List<PvPPlayer> getTop1vs1(int amount, int offset) {
+    public List<KillsDeathsPlayer> getTop1vs1(int amount, int offset) {
         return manager.requestData(Standard.ONE_VS_ONE.getTopURL().formatted(amount, offset))
                 .getAsJsonArray()
                 .asList()
                 .stream()
-                .map(e -> new PvPPlayer(e.getAsJsonObject()))
+                .map(e -> new KillsDeathsPlayer(e.getAsJsonObject()))
                 .toList();
     }
 
@@ -449,8 +449,13 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public FastBridgeIslandsPlayer getFastbridgeIslandsPlayer(UUID uuid) {
-        return new FastBridgeIslandsPlayer(manager.requestData(FastbridgeIslands.GET_PLAYER.getUrl().formatted(uuid)).getAsJsonObject());
+    public List<FastBridgeIslandsPlayer> getFastbridgeIslandsPlayer(UUID uuid) {
+        return manager.requestData(FastbridgeIslands.GET_PLAYER.getUrl().formatted(uuid))
+                .getAsJsonArray()
+                .asList()
+                .stream()
+                .map(e -> new FastBridgeIslandsPlayer(e.getAsJsonObject()))
+                .toList();
     }
 
     @Override
@@ -612,8 +617,8 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public List<JumpNRunPlayer> getTopJumpAndRun(int year, int id, @Nullable Integer amount, @Nullable Integer offset) {
-        return manager.requestData(AdventJnRs.GET_TOP.getUrl().formatted(year, id, (amount == null ? "" : amount).toString() + (offset == null ? "" : offset)))
+    public List<JumpNRunPlayer> getTopJumpAndRun(int year, int id, int amount, int offset) {
+        return manager.requestData(AdventJnRs.GET_TOP.getUrl().formatted(year, id, amount, offset))
                 .getAsJsonArray()
                 .asList()
                 .stream()

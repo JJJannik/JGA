@@ -16,28 +16,39 @@ public enum Minesweeper {
 
     public static String generateOptionalArgsString(Integer amount, Integer offset, Mode mode, RankingCriteria criteria, Generator generator, Long start, Long end) {
         StringBuilder arg = new StringBuilder();
+        boolean first = true;
         if (amount != null) {
-            arg.append("amount=").append(amount);
+            arg.append(prefix(first)).append("amount=").append(amount);
+            first = false;
         }
         if (offset != null) {
-            arg.append("&offset=").append(offset);
+            arg.append(prefix(first)).append("offset=").append(offset);
+            first = false;
         }
         if (mode != null) {
-            arg.append("&mode=").append(mode);
+            arg.append(prefix(first)).append("mode=").append(mode);
+            first = false;
         }
         if (criteria != null) {
-            arg.append("&criteria=").append(criteria);
+            arg.append(prefix(first)).append("criteria=").append(criteria);
+            first = false;
         }
         if (generator != null) {
-            arg.append("&generator=").append(generator);
+            arg.append(prefix(first)).append("generator=").append(generator);
+            first = false;
         }
         if (start != null) {
-            arg.append("&start=").append(start);
+            arg.append(prefix(first)).append("start=").append(start);
+            first = false;
         }
         if (end != null) {
-            arg.append("&end=").append(end);
+            arg.append(prefix(first)).append("end=").append(end);
         }
         return arg.toString();
+    }
+
+    private static String prefix(boolean first) {
+        return first ? "" : "&";
     }
 
     public enum Type {
