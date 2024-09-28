@@ -535,7 +535,7 @@ public interface JGA {
      * @param offset of which place the API returns data
      * @return A list of the top KnockPvP player
      */
-    List<KillsDeathsPlayer> getTopKnockPvP(int amount, int offset);
+    List<KnockPVPPlayer> getTopKnockPvP(int amount, int offset);
 
     /**
      * Get top rolling player stats for KnockPvP
@@ -559,9 +559,9 @@ public interface JGA {
     /**
      * Get player stats for KnockPvP
      * @param uuid of the Player
-     * @return a KillsDeathsPlayer object
+     * @return a KnockPVPPlayer object
      */
-    KillsDeathsPlayer getKnockPvPPlayer(UUID uuid);
+    KnockPVPPlayer getKnockPvPPlayer(UUID uuid);
 
     // KnockPvPLab
 
@@ -617,7 +617,7 @@ public interface JGA {
      * @param generator Minesweeper map generator
      * @return A list of the top Minesweeper times
      */
-    List<MinesweeperTimeEntry> getTopMinesweeperTimes(@Nullable Integer amount, @Nullable Integer offset, @Nullable Mode mode, @Nullable RankingCriteria criteria, @Nullable Long startTimestamp, @Nullable Long endTimestamp, @NotNull Type type, @NotNull Generator generator);
+    List<MinesweeperTopEntry> getTopMinesweeperTimes(@Nullable Integer amount, @Nullable Integer offset, @Nullable Mode mode, @Nullable RankingCriteria criteria, @Nullable Long startTimestamp, @Nullable Long endTimestamp, @NotNull Type type, @NotNull Generator generator);
 
     /**
      * Get top Minesweeper times of Player

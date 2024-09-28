@@ -15,7 +15,6 @@ public class MinesweeperGameEntry extends DataEntity {
     private final int time;
     private final String timestamp;
     private final Generator generator;
-    private final String gameString;
     private String gameData = null;
     private final String saveField;
     private final int mines;
@@ -32,8 +31,7 @@ public class MinesweeperGameEntry extends DataEntity {
         this.time = object.get("time").getAsInt();
         this.timestamp = object.get("timestamp").getAsString();
         this.generator = Generator.valueOf(object.get("generator").getAsString());
-        this.gameString = object.get("gameString").getAsString();
-        if (!object.get("gameData").isJsonNull()) this.gameData = object.get("gameData").getAsString(); // This is necessary since gameData does not have any data before it got implemented in the Game
+        if (!object.get("gameData").isJsonNull()) this.gameData = object.get("gameData").getAsString();
         this.saveField = object.get("saveField").getAsString();
         this.mines = object.get("mines").getAsInt();
         this.correctFlags = object.get("correctFlags").getAsInt();

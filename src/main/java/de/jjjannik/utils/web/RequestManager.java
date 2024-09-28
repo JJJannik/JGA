@@ -4,10 +4,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import de.jjjannik.JGAInitializer;
 import de.jjjannik.utils.exceptions.APICallException;
+import de.jjjannik.utils.exceptions.APITimeoutException;
 import lombok.extern.log4j.Log4j2;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.Optional;
 
 /**
@@ -21,7 +23,12 @@ public class RequestManager {
     public @NotNull JsonElement requestData(String uri) {
         JsonElement element = new JsonObject();
         try {
-            Optional<HttpResponse> optionalResponse = request.doRequest(uri);
+            Optional<HttpResponse> optionalResponse;
+            try {
+                optionalResponse = request.doRequest(uri);
+            } catch (SocketTimeoutException e) {
+                throw new APITimeoutException("Request timeout");
+            }
 
             if (optionalResponse.isPresent()) {
                 HttpResponse response = optionalResponse.get();

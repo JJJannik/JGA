@@ -14,9 +14,13 @@ public enum Minesweeper {
 
     private final String url;
 
-    public static String generateOptionalArgsString(Integer amount, Integer offset, Mode mode, RankingCriteria criteria, Generator generator, Long start, Long end) {
+    public static String generateOptionalArgsString(Integer amount, Integer offset, Type type, Mode mode, RankingCriteria criteria, Generator generator, Long start, Long end) {
         StringBuilder arg = new StringBuilder();
         boolean first = true;
+        if (type != null) {
+            arg.append(prefix(first)).append("type=").append(type);
+            first = false;
+        }
         if (amount != null) {
             arg.append(prefix(first)).append("amount=").append(amount);
             first = false;
@@ -30,7 +34,7 @@ public enum Minesweeper {
             first = false;
         }
         if (criteria != null) {
-            arg.append(prefix(first)).append("criteria=").append(criteria);
+            arg.append(prefix(first)).append("rankingCriteria=").append(criteria);
             first = false;
         }
         if (generator != null) {

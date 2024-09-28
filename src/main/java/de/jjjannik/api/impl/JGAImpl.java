@@ -65,7 +65,7 @@ public class JGAImpl implements JGA {
 
     @Override
     public List<PerformancePlayer> getTopPerformance(int amount, int offset) {
-        return manager.requestData(Badges.GET_PLAYER.getUrl().formatted(amount, offset))
+        return manager.requestData(Standard.PLAYER_PERFORMANCE.getTopURL().formatted(amount, offset))
                 .getAsJsonArray()
                 .asList()
                 .stream()
@@ -519,18 +519,18 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public List<KillsDeathsPlayer> getTopKnockPvP(int amount, int offset) {
+    public List<KnockPVPPlayer> getTopKnockPvP(int amount, int offset) {
         return manager.requestData(KnockPVP.GET_TOP.getUrl().formatted(amount, offset))
                 .getAsJsonArray()
                 .asList()
                 .stream()
-                .map(e -> new KillsDeathsPlayer(e.getAsJsonObject()))
+                .map(e -> new KnockPVPPlayer(e.getAsJsonObject()))
                 .toList();
     }
 
     @Override
     public List<KillsDeathsPlayer> getRollingTopKnockPvP(int amount, int offset, long startTimestamp, long endTimestamp) {
-        return manager.requestData(KnockPVP.GET_TOP.getUrl().formatted(amount, offset, startTimestamp, endTimestamp))
+        return manager.requestData(KnockPVP.GET_ROLLING_TOP.getUrl().formatted(amount, offset, startTimestamp, endTimestamp))
                 .getAsJsonArray()
                 .asList()
                 .stream()
@@ -544,8 +544,8 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public KillsDeathsPlayer getKnockPvPPlayer(UUID uuid) {
-        return new KillsDeathsPlayer(manager.requestData(KnockPVP.GET_PLAYER.getUrl().formatted(uuid)).getAsJsonObject());
+    public KnockPVPPlayer getKnockPvPPlayer(UUID uuid) {
+        return new KnockPVPPlayer(manager.requestData(KnockPVP.GET_PLAYER.getUrl().formatted(uuid)).getAsJsonObject());
     }
 
     @Override
@@ -560,7 +560,7 @@ public class JGAImpl implements JGA {
 
     @Override
     public List<KillsDeathsPlayer> getRollingTopKnockPvPLab(String experiment, int amount, int offset, long startTimestamp, long endTimestamp) {
-        return manager.requestData(KnockPVPLab.GET_TOP.getUrl().formatted(experiment, amount, offset, startTimestamp, endTimestamp))
+        return manager.requestData(KnockPVPLab.GET_ROLLING_TOP.getUrl().formatted(experiment, amount, offset, startTimestamp, endTimestamp))
                 .getAsJsonArray()
                 .asList()
                 .stream()
@@ -579,13 +579,13 @@ public class JGAImpl implements JGA {
     }
 
     @Override
-    public List<MinesweeperTimeEntry> getTopMinesweeperTimes(@Nullable Integer amount, @Nullable Integer offset, @Nullable Mode mode, @Nullable RankingCriteria criteria, @Nullable Long startTimestamp, @Nullable Long endTimestamp, @NotNull Type type, @NotNull Generator generator) {
+    public List<MinesweeperTopEntry> getTopMinesweeperTimes(@Nullable Integer amount, @Nullable Integer offset, @Nullable Mode mode, @Nullable RankingCriteria criteria, @Nullable Long startTimestamp, @Nullable Long endTimestamp, @NotNull Type type, @NotNull Generator generator) {
         return manager.requestData(Minesweeper.GET_TOP.getUrl()
-                        .formatted(type, generator, Minesweeper.generateOptionalArgsString(amount, offset, mode, criteria, null, startTimestamp, endTimestamp)))
+                        .formatted(type, generator, Minesweeper.generateOptionalArgsString(amount, offset, null, mode, criteria, null, startTimestamp, endTimestamp)))
                 .getAsJsonArray()
                 .asList()
                 .stream()
-                .map(e -> new MinesweeperTimeEntry(e.getAsJsonObject()))
+                .map(e -> new MinesweeperTopEntry(e.getAsJsonObject()))
                 .toList();
     }
 
@@ -608,7 +608,7 @@ public class JGAImpl implements JGA {
     @Override
     public MinesweeperPlayer getMinesweeperPlayer(UUID uuid, @Nullable Type type, @Nullable Generator generator, @Nullable Mode mode, Long startTimestamp, Long endTimestamp) {
         return new MinesweeperPlayer(manager.requestData(Minesweeper.GET_OVERALL.getUrl()
-                .formatted(uuid, Minesweeper.generateOptionalArgsString(null, null, mode, null, generator, startTimestamp, endTimestamp))).getAsJsonObject());
+                .formatted(uuid, Minesweeper.generateOptionalArgsString(null, null, type, mode, null, generator, startTimestamp, endTimestamp))).getAsJsonObject());
     }
 
     @Override
