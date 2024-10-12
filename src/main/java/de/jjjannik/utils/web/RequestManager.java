@@ -35,7 +35,7 @@ public class RequestManager {
                 element = JGAInitializer.getGson().fromJson(response.getBody(), JsonElement.class);
 
                 if (response.getResponseCode() >= 400) {
-                    throw new APICallException("Incorrect API call, check APICallException class description to find out why this could happened");
+                    throw new APICallException("Incorrect API call, check APICallException class description to find out why this could happened", response.getResponseCode());
                 }
             }
         } catch (IOException e) {
